@@ -24,7 +24,7 @@ public class RegistroComida {
     private Integer idUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_receta", nullable = false)
+    @JoinColumn(name = "id_recetas", nullable = false)
     private Recetas recetas;
 
 
@@ -71,11 +71,11 @@ public class RegistroComida {
         this.idUsuario = idUsuario;
     }
 
-    public Recetas getReceta() {
+    public Recetas getRecetas() {
         return recetas;
     }
 
-    public void setReceta(Recetas recetas) {
+    public void setRecetas(Recetas recetas) {
         this.recetas = recetas;
     }
 }

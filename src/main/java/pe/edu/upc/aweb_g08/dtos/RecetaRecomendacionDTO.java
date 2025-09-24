@@ -4,7 +4,7 @@ public class RecetaRecomendacionDTO {
     private Integer idRecomendacion;
     private Float cantidad;
     private Integer unidad;
-    private Integer idReceta;
+    private Integer idRecetas;
     private Integer idUsuario;
 
     public Integer getIdRecomendacion() { return idRecomendacion; }
@@ -16,8 +16,8 @@ public class RecetaRecomendacionDTO {
     public Integer getUnidad() { return unidad; }
     public void setUnidad(Integer unidad) { this.unidad = unidad; }
 
-    public Integer getIdReceta() { return idReceta; }
-    public void setIdReceta(Integer idReceta) { this.idReceta = idReceta; }
+    public Integer getIdRecetas() { return idRecetas; }
+    public void setIdRecetas(Integer idRecetas) { this.idRecetas = idRecetas; }
 
     public Integer getIdUsuario() { return idUsuario; }
     public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }

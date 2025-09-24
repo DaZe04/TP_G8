@@ -8,7 +8,7 @@ public class RegistroComidaDTO {
     private LocalDate fechaConsumo;
     private String notas;
     private Integer idUsuario;
-    private Integer idReceta;
+    private Integer idRecetas;
 
     public Integer getIdRegistro() { return idRegistro; }
     public void setIdRegistro(Integer idRegistro) { this.idRegistro = idRegistro; }
@@ -22,6 +22,6 @@ public class RegistroComidaDTO {
     public Integer getIdUsuario() { return idUsuario; }
     public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
 
-    public Integer getIdReceta() { return idReceta; }
-    public void setIdReceta(Integer idReceta) { this.idReceta = idReceta; }
+    public Integer getIdRecetas() { return idRecetas; }
+    public void setIdRecetas(Integer idRecetas) { this.idRecetas = idRecetas; }
 }

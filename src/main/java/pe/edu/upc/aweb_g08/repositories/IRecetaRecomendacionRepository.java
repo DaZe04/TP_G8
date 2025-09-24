@@ -15,6 +15,6 @@ public interface IRecetaRecomendacionRepository extends JpaRepository<Receta_Rec
     List<Receta_Recomendacion> findByUsuario(@Param("idPerfil") int idPerfil);
 
 
-    @Query("SELECT r FROM Receta_Recomendacion r WHERE LOWER(r.receta) LIKE LOWER(CONCAT('%', :ingrediente, '%'))")
+    @Query("SELECT r FROM Receta_Recomendacion r WHERE LOWER(r.recetas) LIKE LOWER(CONCAT('%', :ingrediente, '%'))")
     List<Receta_Recomendacion> findByReceta(@Param("ingrediente") String ingrediente);
 }

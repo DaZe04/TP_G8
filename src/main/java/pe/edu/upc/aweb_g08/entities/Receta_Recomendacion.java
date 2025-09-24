@@ -21,7 +21,7 @@ public class Receta_Recomendacion {
     // Relación con Recetas (FK)
     @ManyToOne
     @JoinColumn(name = "id_recetas", nullable = false)
-    private Recetas receta;
+    private Recetas recetas;
 
     // Relación con Usuario (FK)
     @ManyToOne
@@ -34,7 +34,7 @@ public class Receta_Recomendacion {
         this.idRecomendacion = idRecomendacion;
         this.cantidad = cantidad;
         this.unidad = unidad;
-        this.receta = receta;
+        this.recetas = recetas;
         this.usuario = usuario;
     }
 
@@ -48,8 +48,8 @@ public class Receta_Recomendacion {
     public int getUnidad() { return unidad; }
     public void setUnidad(int unidad) { this.unidad = unidad; }
 
-    public Recetas getReceta() { return receta; }
-    public void setReceta(Recetas receta) { this.receta = receta; }
+    public Recetas getRecetas() { return recetas; }
+    public void setRecetas(Recetas recetas) { this.recetas = recetas; }
 
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }

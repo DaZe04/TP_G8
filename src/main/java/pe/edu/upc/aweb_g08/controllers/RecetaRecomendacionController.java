@@ -31,8 +31,8 @@ public class RecetaRecomendacionController {
     @PostMapping
     public void insertar(@RequestBody RecetaRecomendacionDTO dto) {
         ModelMapper m = new ModelMapper();
-        Receta_Recomendacion receta = m.map(dto, Receta_Recomendacion.class);
-        recetaService.insert(receta);
+        Receta_Recomendacion recetas = m.map(dto, Receta_Recomendacion.class);
+        recetaService.insert(recetas);
     }
 
 

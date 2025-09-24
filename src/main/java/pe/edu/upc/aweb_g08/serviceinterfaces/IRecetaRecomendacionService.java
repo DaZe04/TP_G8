@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IRecetaRecomendacionService {
     List<Receta_Recomendacion> list();
-    void insert(Receta_Recomendacion receta);
+    void insert(Receta_Recomendacion recetas);
     List<Receta_Recomendacion> buscarPorIngrediente(String ingrediente);
 
     Receta_Recomendacion listId(int id);

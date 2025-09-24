@@ -84,21 +84,6 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/buscar")
-    public ResponseEntity<?> buscar(@RequestParam String nombre) {
-        List<Usuario> usuarios = usuarioService.buscarService(nombre);
 
-        if (usuarios.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron usuarios con el nombre: " + nombre);
-        }
-
-        List<UsuarioDTO> listaDTO = usuarios.stream().map(usuario -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(usuario, UsuarioDTO.class);
-        }).collect(Collectors.toList());
-
-        return ResponseEntity.ok(listaDTO);
-    }
 
 }
