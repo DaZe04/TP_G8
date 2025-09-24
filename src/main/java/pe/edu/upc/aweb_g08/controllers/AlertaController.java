@@ -29,7 +29,7 @@ public class AlertaController {
         }).collect(Collectors.toList());
     }
 
-    // INSERTAR
+    // PRUEBA 1
     @PostMapping
     public ResponseEntity<String> insertar(@RequestBody AlertaDTO dto) {
         ModelMapper m = new ModelMapper();
