@@ -7,7 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.SuscripcionesDTO;
 import pe.edu.upc.aweb_g08.entities.Suscripciones;
-import pe.edu.upc.aweb_g08.servicesinterfaces.ISuscripcionesService;
+import pe.edu.upc.aweb_g08.repositories.IUsuarioRepository;
+import pe.edu.upc.aweb_g08.serviceinterfaces.ISuscripcionesService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,9 @@ import java.util.stream.Collectors;
 public class SuscripcionesController {
     @Autowired
     private ISuscripcionesService service;
+
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
     @PostMapping
     public void insertar(@RequestBody SuscripcionesDTO sdto)
     {

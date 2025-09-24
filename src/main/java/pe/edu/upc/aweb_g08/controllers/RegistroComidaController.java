@@ -1,4 +1,4 @@
-package pe.edu.upc.aweb_g08.controller;
+package pe.edu.upc.aweb_g08.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.RegistroComidaDTO;
 import pe.edu.upc.aweb_g08.entities.RegistroComida;
-import pe.edu.upc.aweb_g08.servicesinterfaces.IRegistroComidaService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.IRegistroComidaService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-
+@RequestMapping("/registro-comida")
 public class RegistroComidaController {
     @Autowired
     private IRegistroComidaService rcService;

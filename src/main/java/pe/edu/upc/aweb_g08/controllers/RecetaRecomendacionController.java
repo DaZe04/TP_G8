@@ -1,17 +1,18 @@
-package pe.edu.upc.aweb_g08.controller;
+package pe.edu.upc.aweb_g08.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.RecetaRecomendacionDTO;
 import pe.edu.upc.aweb_g08.entities.Receta_Recomendacion;
-import pe.edu.upc.aweb_g08.servicesinterfaces.IRecetaRecomendacionService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.IRecetaRecomendacionService;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
-@RestController
 
+@RestController
+@RequestMapping("/receta-recomendacion")
 public class RecetaRecomendacionController {
 
     @Autowired

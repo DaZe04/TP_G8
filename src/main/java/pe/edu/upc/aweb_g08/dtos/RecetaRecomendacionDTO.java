@@ -1,30 +1,24 @@
 package pe.edu.upc.aweb_g08.dtos;
 
-import java.time.LocalDate;
-
 public class RecetaRecomendacionDTO {
     private Integer idRecomendacion;
-    private String motivo;
-    private LocalDate fechaGeneracion;
-    private String estado;
-    private Integer idPerfil;
+    private Float cantidad;
+    private Integer unidad;
     private Integer idReceta;
+    private Integer idUsuario;
 
     public Integer getIdRecomendacion() { return idRecomendacion; }
     public void setIdRecomendacion(Integer idRecomendacion) { this.idRecomendacion = idRecomendacion; }
 
-    public String getMotivo() { return motivo; }
-    public void setMotivo(String motivo) { this.motivo = motivo; }
+    public Float getCantidad() { return cantidad; }
+    public void setCantidad(Float cantidad) { this.cantidad = cantidad; }
 
-    public LocalDate getFechaGeneracion() { return fechaGeneracion; }
-    public void setFechaGeneracion(LocalDate fechaGeneracion) { this.fechaGeneracion = fechaGeneracion; }
-
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
-
-    public Integer getIdPerfil() { return idPerfil; }
-    public void setIdPerfil(Integer idPerfil) { this.idPerfil = idPerfil; }
+    public Integer getUnidad() { return unidad; }
+    public void setUnidad(Integer unidad) { this.unidad = unidad; }
 
     public Integer getIdReceta() { return idReceta; }
     public void setIdReceta(Integer idReceta) { this.idReceta = idReceta; }
+
+    public Integer getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
 }

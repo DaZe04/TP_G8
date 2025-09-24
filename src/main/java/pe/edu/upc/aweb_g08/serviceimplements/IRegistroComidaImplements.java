@@ -1,10 +1,10 @@
-package pe.edu.upc.aweb_g08.servicesimplements;
+package pe.edu.upc.aweb_g08.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.aweb_g08.entities.RegistroComida;
 import pe.edu.upc.aweb_g08.repositories.IRegistroComidaRepository;
-import pe.edu.upc.aweb_g08.servicesinterfaces.IRegistroComidaService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.IRegistroComidaService;
 
 import java.util.List;
 @Service

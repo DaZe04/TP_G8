@@ -11,7 +11,7 @@ import pe.edu.upc.aweb_g08.serviceinterfaces.IingredientesService;
 import java.util.List;
 
 @Repository
-public class IngredientesServiceImplement extends IingredientesService {
+public class IngredientesServiceImplement implements IingredientesService {
 
     @Autowired
     private IingredientesRepository iR;

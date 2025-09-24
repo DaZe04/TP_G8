@@ -1,4 +1,4 @@
-package pe.edu.upc.entities;
+package pe.edu.upc.aweb_g08.entities;
 
 import jakarta.persistence.*;
 

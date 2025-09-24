@@ -1,10 +1,10 @@
-package pe.edu.upc.aweb_g08.servicesimplements;
+package pe.edu.upc.aweb_g08.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.aweb_g08.entities.Lista_Compras;
 import pe.edu.upc.aweb_g08.repositories.ILista_ComprasRepository;
-import pe.edu.upc.aweb_g08.servicesinterfaces.ILista_ComprasService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.ILista_ComprasService;
 
 import java.util.List;
 @Service

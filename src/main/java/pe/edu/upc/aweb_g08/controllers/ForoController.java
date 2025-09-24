@@ -1,10 +1,12 @@
 package pe.edu.upc.aweb_g08.controllers;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.ForoDTO;
 import pe.edu.upc.aweb_g08.entities.Foro;
+import pe.edu.upc.aweb_g08.entities.Usuario;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IForoService;
 
 import java.util.List;

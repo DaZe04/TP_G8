@@ -1,7 +1,8 @@
-package com.example.demo.entities;
+package pe.edu.upc.aweb_g08.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+
+
 import java.time.LocalDate;
 
 @Entity
@@ -24,31 +25,57 @@ public class RegistroComida {
 
     @ManyToOne
     @JoinColumn(name = "id_receta", nullable = false)
-    private Receta receta;
+    private Recetas recetas;
 
-    // 🔹 Constructores
-    public RegistroComida() {}
 
-    public RegistroComida(LocalDate fechaConsumo, String notas, Integer idUsuario, Receta receta) {
+    public RegistroComida() {
+    }
+
+    public RegistroComida(LocalDate fechaConsumo, String notas, Integer idUsuario, Recetas recetas) {
         this.fechaConsumo = fechaConsumo;
         this.notas = notas;
         this.idUsuario = idUsuario;
-        this.receta = receta;
+        this.recetas = recetas;
     }
 
-    // 🔹 Getters y Setters
-    public Integer getIdRegistro() { return idRegistro; }
-    public void setIdRegistro(Integer idRegistro) { this.idRegistro = idRegistro; }
 
-    public LocalDate getFechaConsumo() { return fechaConsumo; }
-    public void setFechaConsumo(LocalDate fechaConsumo) { this.fechaConsumo = fechaConsumo; }
+    public Integer getIdRegistro() {
+        return idRegistro;
+    }
 
-    public String getNotas() { return notas; }
-    public void setNotas(String notas) { this.notas = notas; }
+    public void setIdRegistro(Integer idRegistro) {
+        this.idRegistro = idRegistro;
+    }
 
-    public Integer getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
+    public LocalDate getFechaConsumo() {
+        return fechaConsumo;
+    }
 
-    public Receta getReceta() { return receta; }
-    public void setReceta(Receta receta) { this.receta = receta; }
+    public void setFechaConsumo(LocalDate fechaConsumo) {
+        this.fechaConsumo = fechaConsumo;
+    }
+
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Recetas getReceta() {
+        return recetas;
+    }
+
+    public void setReceta(Recetas recetas) {
+        this.recetas = recetas;
+    }
 }

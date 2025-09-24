@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package pe.edu.upc.aweb_g08.entities;
 
 import jakarta.persistence.*;
 
@@ -19,7 +19,7 @@ public class Lista_Compras {
     @Column(name = "cantidad")
     private int cantidad;
 
-    // Relación con Ingredientes (FK)
+
     @ManyToOne
     @JoinColumn(name = "id_ingrediente", nullable = false)
     private Ingredientes ingrediente;
@@ -33,7 +33,7 @@ public class Lista_Compras {
         this.ingrediente = ingrediente;
     }
 
-    // Getters y Setters
+
     public int getIdListaCompra() { return idListaCompra; }
     public void setIdListaCompra(int idListaCompra) { this.idListaCompra = idListaCompra; }
 
@@ -45,5 +45,5 @@ public class Lista_Compras {
 
     public Ingredientes getIngrediente() { return ingrediente; }
     public void setIngrediente(Ingredientes ingrediente) { this.ingrediente = ingrediente; }
-}
-}
+
+    }

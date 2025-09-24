@@ -5,36 +5,43 @@ import org.springframework.stereotype.Service;
 import pe.edu.upc.aweb_g08.entities.Receta_Recomendacion;
 import pe.edu.upc.aweb_g08.repositories.IRecetaRecomendacionRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IRecetaRecomendacionService;
+
 import java.util.List;
-
 @Service
-public class IRecetaRecomendacionImplement implements IRecetaRecomendacionService {
+
+public class IRecetaRecomendacion implements IRecetaRecomendacionService {
 
     @Autowired
-    private IRecetaRecomendacionRepository recetaRecomendacionRepo;
-
-    @Autowired
-    private IRecetaRepository recetaRepo;
-
-    @Autowired
-    private IUsuarioRepository usuarioRepo;
+    private IRecetaRecomendacionRepository rrRepository;
 
     @Override
-    public void insert(RecetaRecomendacionDTO dto) {
-        Receta_Recomendacion entity = new Receta_Recomendacion();
-        entity.setCantidad(dto.getCantidad());
-        entity.setUnidad(dto.getUnidad());
-
-        // 🔗 Buscar la receta por ID
-        Recetas receta = recetaRepo.findById(dto.getIdReceta())
-                .orElseThrow(() -> new RuntimeException("Receta no encontrada"));
-        entity.setReceta(receta);
-
-        // 🔗 Buscar el usuario por ID
-        Usuario usuario = usuarioRepo.findById(dto.getIdUsuario())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-        entity.setUsuario(usuario);
-
-        recetaRecomendacionRepo.save(entity);
+    public List<Receta_Recomendacion> list() {
+        return rrRepository.findAll();
     }
+
+    @Override
+    public void insert(Receta_Recomendacion recomendacion) {
+        rrRepository.save(recomendacion);
+    }
+
+    @Override
+    public List<Receta_Recomendacion> buscarPorIngrediente(String ingrediente) {
+        return List.of();
+    }
+
+    @Override
+    public Receta_Recomendacion listId(int id) {
+        return rrRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(int id) {
+        rrRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Receta_Recomendacion> listarPorPerfil(int idUsuario) {
+        return rrRepository.findByUsuario(idUsuario);
+    }
+
 }

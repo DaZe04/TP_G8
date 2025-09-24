@@ -1,60 +1,83 @@
-package com.example.demo.entities;
+package pe.edu.upc.aweb_g08.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
-@Table(name ="perfil_salud")
-
+@Table(name = "PerfilSalud")
 public class PerfilSalud {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_perfil")
-    private Integer idPerfil;
+    @Column(name = "id_perfil_salud")
+    private int idPerfilSalud;
+
+    @Column(name = "peso", nullable = false)
+    private double peso;
+
+    @Column(name = "altura", nullable = false)
+    private double altura;
 
     @Column(name = "nivel_trigliceridos")
-    private Float nivelTrigliceridos;
+    private double nivelTrigliceridos;
 
-    @Column(name = "peso")
-    private Float peso;
+    @Column(name = "nivel_colesterol")
+    private double nivelColesterol;
 
-    @Column(name = "altura")
-    private Float altura;
+    @Column(name = "fecha_actualizacion", nullable = false)
+    private LocalDate fechaActualizacion;
 
-    @Column(name = "fecha_registro")
-    private LocalDate fechaRegistro;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
 
-    @Column(name = "id_usuario")
-    private Integer idUsuario;
-
-    public PerfilSalud() {}
-
-    public PerfilSalud(Integer idPerfil, Float nivelTrigliceridos, Float peso, Float altura, LocalDate fechaRegistro, Integer idUsuario) {
-        this.idPerfil = idPerfil;
-        this.nivelTrigliceridos = nivelTrigliceridos;
-        this.peso = peso;
-        this.altura = altura;
-        this.fechaRegistro = fechaRegistro;
-        this.idUsuario = idUsuario;
+    // Getters y Setters
+    public int getIdPerfilSalud() {
+        return idPerfilSalud;
+    }
+    public void setIdPerfilSalud(int idPerfilSalud) {
+        this.idPerfilSalud = idPerfilSalud;
     }
 
-    // Getters y setters
-    public Integer getIdPerfil() { return idPerfil; }
-    public void setIdPerfil(Integer idPerfil) { this.idPerfil = idPerfil; }
+    public double getPeso() {
+        return peso;
+    }
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
 
-    public Float getNivelTrigliceridos() { return nivelTrigliceridos; }
-    public void setNivelTrigliceridos(Float nivelTrigliceridos) { this.nivelTrigliceridos = nivelTrigliceridos; }
+    public double getAltura() {
+        return altura;
+    }
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
 
-    public Float getPeso() { return peso; }
-    public void setPeso(Float peso) { this.peso = peso; }
+    public double getNivelTrigliceridos() {
+        return nivelTrigliceridos;
+    }
+    public void setNivelTrigliceridos(double nivelTrigliceridos) {
+        this.nivelTrigliceridos = nivelTrigliceridos;
+    }
 
-    public Float getAltura() { return altura; }
-    public void setAltura(Float altura) { this.altura = altura; }
+    public double getNivelColesterol() {
+        return nivelColesterol;
+    }
+    public void setNivelColesterol(double nivelColesterol) {
+        this.nivelColesterol = nivelColesterol;
+    }
 
-    public LocalDate getFechaRegistro() { return fechaRegistro; }
-    public void setFechaRegistro(LocalDate fechaRegistro) { this.fechaRegistro = fechaRegistro; }
+    public LocalDate getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
 
-    public Integer getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

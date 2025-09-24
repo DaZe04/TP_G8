@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.Lista_ComprasDTO;
 import pe.edu.upc.aweb_g08.entities.Lista_Compras;
-import pe.edu.upc.aweb_g08.servicesinterfaces.ILista_ComprasService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.ILista_ComprasService;
 import pe.edu.upc.aweb_g08.entities.Ingredientes;
 
 

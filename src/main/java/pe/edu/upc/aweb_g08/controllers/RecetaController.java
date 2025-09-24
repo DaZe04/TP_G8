@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.RecetasDTO;
 import pe.edu.upc.aweb_g08.entities.Recetas;
-import pe.edu.upc.aweb_g08.servicesinterfaces.IRecetasService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.IRecetasService;
 
 import java.util.List;
 import java.util.stream.Collectors;

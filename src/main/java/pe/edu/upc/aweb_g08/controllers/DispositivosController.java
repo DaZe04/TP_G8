@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.DispositivosDTO;
 import pe.edu.upc.aweb_g08.entities.Dispositivos;
-import pe.edu.upc.aweb_g08.servicesinterfaces.IDispositivosService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.IDispositivosService;
 
 import java.util.List;
 import java.util.stream.Collectors;

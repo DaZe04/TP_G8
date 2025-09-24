@@ -1,10 +1,10 @@
-package pe.edu.upc.aweb_g08.servicesimplements;
+package pe.edu.upc.aweb_g08.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.aweb_g08.entities.Suscripciones;
 import pe.edu.upc.aweb_g08.repositories.ISuscripcionesRepository;
-import pe.edu.upc.aweb_g08.servicesinterfaces.ISuscripcionesService;
+import pe.edu.upc.aweb_g08.serviceinterfaces.ISuscripcionesService;
 
 import java.util.List;
 @Service

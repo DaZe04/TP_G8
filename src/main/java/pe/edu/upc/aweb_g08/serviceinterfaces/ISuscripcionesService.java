@@ -1,4 +1,4 @@
-package pe.edu.upc.aweb_g08.servicesinterfaces;
+package pe.edu.upc.aweb_g08.serviceinterfaces;
 
 import pe.edu.upc.aweb_g08.entities.Suscripciones;
 

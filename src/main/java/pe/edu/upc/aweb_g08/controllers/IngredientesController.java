@@ -1,4 +1,5 @@
 package pe.edu.upc.aweb_g08.controllers;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.IngredientesDTO;
 import pe.edu.upc.aweb_g08.entities.Ingredientes;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IingredientesService;
-
+import org.modelmapper.ModelMapper;
+import java.util.stream.Collectors;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
