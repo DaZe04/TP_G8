@@ -12,6 +12,26 @@ public class UsuarioDTO {
     private LocalDate fechaSuscripcion;
     private String rol; // Para listar (nombre del rol)
     private int idRol;  // Para insertar (id del rol)
+    private String comentario;
+
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public UsuarioDTO(int idUsuario, String nombre, String apellido, int idRol, String comentario) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.idRol = idRol;
+        this.comentario = comentario;
+    }
+
+
 
     // Getters y Setters
     public int getIdUsuario() {
@@ -93,4 +113,5 @@ public class UsuarioDTO {
     public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
+
 }

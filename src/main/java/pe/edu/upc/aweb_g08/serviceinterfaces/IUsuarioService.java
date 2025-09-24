@@ -1,6 +1,6 @@
 package pe.edu.upc.aweb_g08.serviceinterfaces;
 
-import org.springframework.data.repository.query.Param;
+import pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO;
 import pe.edu.upc.aweb_g08.entities.Usuario;
 import java.util.List;
 
@@ -11,4 +11,6 @@ public interface IUsuarioService {
     public void delete(int id);
     public void update(Usuario usuario);
     public List<Usuario> buscarService(String nombre);
+    public List<AdminComentarioDTO> buscarAdminsConComentarios();
+
 }

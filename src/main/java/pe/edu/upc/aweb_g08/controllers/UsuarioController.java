@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO;
 import pe.edu.upc.aweb_g08.dtos.UsuarioDTO;
 import pe.edu.upc.aweb_g08.entities.Rol;
 import pe.edu.upc.aweb_g08.entities.Usuario;
@@ -82,6 +83,13 @@ public class UsuarioController {
         usuarioService.update(usuario);
         return ResponseEntity.ok("Usuario con ID " + usuario.getIdUsuario() + " modificado correctamente.");
     }
+
+    @GetMapping("/admins-comentarios")
+    public List<AdminComentarioDTO> obtenerAdminsConComentarios() {
+        return usuarioService.buscarAdminsConComentarios();
+    }
+
+
 
 
 

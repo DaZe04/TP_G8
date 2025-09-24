@@ -2,6 +2,8 @@ package pe.edu.upc.aweb_g08.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO;
+import pe.edu.upc.aweb_g08.dtos.UsuarioDTO;
 import pe.edu.upc.aweb_g08.entities.Usuario;
 import pe.edu.upc.aweb_g08.repositories.IUsuarioRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IUsuarioService;
@@ -43,6 +45,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     @Override
     public List<Usuario> buscarService(String nombre) {
         return uR.buscarService(nombre);
+    }
+
+    @Override
+    public List<AdminComentarioDTO> buscarAdminsConComentarios() {
+        return uR.buscarAdminsConComentarios();
     }
 
 

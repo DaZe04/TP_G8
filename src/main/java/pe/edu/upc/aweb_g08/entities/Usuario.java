@@ -2,6 +2,7 @@ package pe.edu.upc.aweb_g08.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "Usuario")
@@ -33,14 +34,23 @@ public class Usuario {
     @Column(name = "fecha_suscripcion")
     private LocalDate fechaSuscripcion;
 
-
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
 
 
-    public Usuario() {}
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reportes> reportes;
 
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentarios> comentarios;
+
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Alertas> alertas;
+
+    public Usuario() {}
 
     public Usuario(int idUsuario, String nombre, String apellido, String email, String contrasenia,
                    LocalDate fechaNacimiento, LocalDate fechaCreacion, LocalDate fechaSuscripcion, Rol rol) {
@@ -55,6 +65,7 @@ public class Usuario {
         this.rol = rol;
     }
 
+    // Getters y Setters
 
     public int getIdUsuario() {
         return idUsuario;
@@ -88,9 +99,13 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContrasenia() { return contrasenia; }
+    public String getContrasenia() {
+        return contrasenia;
+    }
 
-    public void setContrasenia(String contrasenia) { this.contrasenia = contrasenia; }
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
@@ -122,5 +137,29 @@ public class Usuario {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    public List<Reportes> getReportes() {
+        return reportes;
+    }
+
+    public void setReportes(List<Reportes> reportes) {
+        this.reportes = reportes;
+    }
+
+    public List<Comentarios> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentarios> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public List<Alertas> getAlertas() {
+        return alertas;
+    }
+
+    public void setAlertas(List<Alertas> alertas) {
+        this.alertas = alertas;
     }
 }
