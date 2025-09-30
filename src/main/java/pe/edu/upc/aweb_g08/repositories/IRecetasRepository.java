@@ -7,4 +7,5 @@ import pe.edu.upc.aweb_g08.entities.Recetas;
 
 @Repository
 public interface IRecetasRepository extends JpaRepository<Recetas, Integer> {
+
 }
