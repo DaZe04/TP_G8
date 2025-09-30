@@ -6,7 +6,17 @@ public class ReportesDTO {
     private int idReporte;
     private String titulo;
     private String descripcion;
-    private LocalDate fechaCreacion;
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+    public ReportesDTO() {
+    }
+    private LocalDate fecha;
     private int idUsuario; // Para insertar
     private String nombreUsuario; // Para listar
 
@@ -32,12 +42,6 @@ public class ReportesDTO {
         this.descripcion = descripcion;
     }
 
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
-    }
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
 
     public int getIdUsuario() {
         return idUsuario;

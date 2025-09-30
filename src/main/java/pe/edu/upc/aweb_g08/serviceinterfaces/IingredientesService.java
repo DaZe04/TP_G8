@@ -10,4 +10,5 @@ public interface IingredientesService {
     public Ingredientes listId(int id);
     public void delete(int id);
     public void update(Ingredientes ingredientes);
+    public List<String[]> topIngredientesCaloricos();
 }

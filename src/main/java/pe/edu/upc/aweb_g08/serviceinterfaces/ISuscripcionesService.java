@@ -10,4 +10,6 @@ public interface ISuscripcionesService {
     public Suscripciones buscar(int id);
     public void delete(int id);
     public void update(Suscripciones suscripciones);
+    public List<String[]> quantitytypebySuscripciones();
+    public List<String[]> quantityDevicebySuscripciones();
 }

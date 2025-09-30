@@ -12,5 +12,6 @@ public interface IUsuarioService {
     public void update(Usuario usuario);
     public List<Usuario> buscarService(String nombre);
     public List<AdminComentarioDTO> buscarAdminsConComentarios();
+    public List<String[]> usuariosMasActivos();
 
 }

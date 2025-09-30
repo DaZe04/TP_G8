@@ -37,4 +37,13 @@ public class ISucripcionesServiceImplement implements ISuscripcionesService {
     public void update(Suscripciones suscripciones) {
         repository.save(suscripciones);
     }
+    @Override
+    public List<String[]> quantitytypebySuscripciones() {
+        return repository.quantitytypebySuscripciones();
+    }
+
+    @Override
+    public List<String[]> quantityDevicebySuscripciones() {
+        return repository.quantityDevicebySuscripciones();
+    }
 }

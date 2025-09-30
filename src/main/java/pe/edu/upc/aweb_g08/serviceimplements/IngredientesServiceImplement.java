@@ -40,4 +40,9 @@ public class IngredientesServiceImplement implements IingredientesService {
     public void update(Ingredientes ingredientes) {
         iR.save(ingredientes);
     }
+
+    @Override
+    public List<String[]> topIngredientesCaloricos() {
+        return iR.topIngredientesCaloricos();
+    }
 }

@@ -8,14 +8,17 @@ import pe.edu.upc.aweb_g08.entities.Lista_Compras;
 import java.time.LocalDate;
 public class RecetasDTO  {
     private int idRecetas;
-    private String titulo;
-    private String descripcion;
-    private String dificultad;
-    private int tiempoPreparacion;
-    private Usuario usuario;
-    private Lista_Compras listaCompra;
 
-    public RecetasDTO() {
+
+
+    private String titulo;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getIdRecetas() {
@@ -34,14 +37,6 @@ public class RecetasDTO  {
         this.titulo = titulo;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public String getDificultad() {
         return dificultad;
     }
@@ -58,31 +53,42 @@ public class RecetasDTO  {
         this.tiempoPreparacion = tiempoPreparacion;
     }
 
-    public Lista_Compras getListaCompra() {
-        return listaCompra;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setListaCompra(Lista_Compras listaCompra) {
-        this.listaCompra = listaCompra;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public int getIdListaCompra() {
+        return idListaCompra;
+    }
+
+    public void setIdListaCompra(int idListaCompra) {
+        this.idListaCompra = idListaCompra;
+    }
+
+    private String descripcion;
+    private String dificultad;
+    private int tiempoPreparacion;
+    private int idUsuario;
+    private int idListaCompra;
+
+    public RecetasDTO() {
     }
 
     public RecetasDTO(int idRecetas, String titulo, String descripcion, String dificultad,
-                      int tiempoPreparacion, Usuario usuario, Lista_Compras listaCompra) {
+                      int tiempoPreparacion, int id_usuario, int idListaCompra) {
         this.idRecetas = idRecetas;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.dificultad = dificultad;
         this.tiempoPreparacion = tiempoPreparacion;
-        this.usuario = usuario;
-        this.listaCompra = listaCompra;
+        this.idUsuario = id_usuario;
+        this.idListaCompra = idListaCompra;
     }
 
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

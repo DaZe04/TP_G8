@@ -52,5 +52,8 @@ public class UsuarioServiceImplement implements IUsuarioService {
         return uR.buscarAdminsConComentarios();
     }
 
-
+    @Override
+    public List<String[]> usuariosMasActivos() {
+        return uR.usuariosMasActivos();
+    }
 }

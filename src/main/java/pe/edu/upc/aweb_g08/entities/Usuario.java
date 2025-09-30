@@ -50,7 +50,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Alertas> alertas;
 
-    public Usuario() {}
+    public Usuario() {
+    }
 
     public Usuario(int idUsuario, String nombre, String apellido, String email, String contrasenia,
                    LocalDate fechaNacimiento, LocalDate fechaCreacion, LocalDate fechaSuscripcion, Rol rol) {

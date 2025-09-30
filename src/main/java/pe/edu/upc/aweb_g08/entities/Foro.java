@@ -27,8 +27,7 @@ public class Foro {
     private Usuario usuario;
 
     public Foro() {}
-    public Foro(int idForo, String titulo, String contenido, LocalDate fechaPublicacion,Usuario usuario) {
-        this.idForo = idForo;
+    public Foro(String titulo, String contenido, LocalDate fechaPublicacion,Usuario usuario) {
         this.titulo = titulo;
         this.contenido = contenido;
         this.fechaPublicacion = fechaPublicacion;

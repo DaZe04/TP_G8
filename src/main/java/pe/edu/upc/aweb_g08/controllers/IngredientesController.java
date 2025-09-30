@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aweb_g08.dtos.IngredienteCaloriasDTO;
 import pe.edu.upc.aweb_g08.dtos.IngredientesDTO;
 import pe.edu.upc.aweb_g08.entities.Ingredientes;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IingredientesService;
 import org.modelmapper.ModelMapper;
+
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,6 +80,20 @@ public class IngredientesController {
         ingredienteService.update(ingredientes);
         return ResponseEntity.ok("Ingrediente con ID " + ingredientes.getIdIngredientes() + " modificado correctamente.");
     }
+    @GetMapping("/ingredientes/topcalorias")
+    public List<IngredienteCaloriasDTO> topIngredientesCaloricos() {
+        List<String[]> filas = ingredienteService.topIngredientesCaloricos();
+        List<IngredienteCaloriasDTO> resultado = new ArrayList<>();
 
+        for (String[] fila : filas) {
+            // fila[0] = nombre, fila[1] = calorias (como string)
+            IngredienteCaloriasDTO dto = new IngredienteCaloriasDTO();
+            dto.setNombre(fila[0]);
+            dto.setTotalCalorias(Float.parseFloat(fila[1]));
+            resultado.add(dto);
+        }
+
+        return resultado;
+    }
 
 }

@@ -10,25 +10,21 @@ public class UsuarioDTO {
     private LocalDate fechaNacimiento;
     private LocalDate fechaCreacion;
     private LocalDate fechaSuscripcion;
-    private String rol; // Para listar (nombre del rol)
+
     private int idRol;  // Para insertar (id del rol)
-    private String comentario;
 
 
-    public String getComentario() {
-        return comentario;
+
+    public UsuarioDTO() {
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
 
-    public UsuarioDTO(int idUsuario, String nombre, String apellido, int idRol, String comentario) {
+    public UsuarioDTO(int idUsuario, String nombre, String apellido, int idRol) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.idRol = idRol;
-        this.comentario = comentario;
+
     }
 
 
@@ -96,14 +92,6 @@ public class UsuarioDTO {
 
     public void setFechaSuscripcion(LocalDate fechaSuscripcion) {
         this.fechaSuscripcion = fechaSuscripcion;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
     }
 
     public int getIdRol() {

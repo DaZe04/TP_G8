@@ -8,31 +8,25 @@ import pe.edu.upc.aweb_g08.entities.Usuario;
 import java.time.LocalDate;
 
 public class SuscripcionesDTO {
+
+
     private int id_suscripciones;
     private String tipo;
-    private LocalDate fecha_inicio;
-    private LocalDate fecha_fin;
-    private String estado;
-    private Usuario id_usuario;
 
-    public SuscripcionesDTO() {
+    public LocalDate getFecha_inicio() {
+        return fecha_inicio;
     }
 
-    public SuscripcionesDTO(String estado, LocalDate fecha_fin, LocalDate fecha_inicio, int id_suscripciones, Usuario id_usuario, String tipo) {
-        this.estado = estado;
-        this.fecha_fin = fecha_fin;
+    public void setFecha_inicio(LocalDate fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
-        this.id_suscripciones = id_suscripciones;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
-        this.tipo = tipo;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public LocalDate getFecha_fin() {
@@ -43,12 +37,12 @@ public class SuscripcionesDTO {
         this.fecha_fin = fecha_fin;
     }
 
-    public LocalDate getFecha_inicio() {
-        return fecha_inicio;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setFecha_inicio(LocalDate fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public int getId_suscripciones() {
@@ -59,14 +53,6 @@ public class SuscripcionesDTO {
         this.id_suscripciones = id_suscripciones;
     }
 
-    public Usuario getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(Usuario id_usuario) {
-        this.id_usuario = id_usuario;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -74,4 +60,23 @@ public class SuscripcionesDTO {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    private LocalDate fecha_inicio;
+    private LocalDate fecha_fin;
+    private String estado;
+    private Integer id_usuario;
+
+    public SuscripcionesDTO() {
+    }
+
+    public SuscripcionesDTO(String estado, LocalDate fecha_fin, LocalDate fecha_inicio, int id_suscripciones, Integer id_usuario, String tipo) {
+        this.estado = estado;
+        this.fecha_fin = fecha_fin;
+        this.fecha_inicio = fecha_inicio;
+        this.id_suscripciones = id_suscripciones;
+        this.id_usuario = id_usuario;
+        this.tipo = tipo;
+    }
+
+
 }

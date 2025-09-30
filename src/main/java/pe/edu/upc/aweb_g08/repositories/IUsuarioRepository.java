@@ -20,7 +20,15 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
             "WHERE r.idRol = 1 AND UPPER(r.nombre) = 'ADMIN'")
     List<AdminComentarioDTO> buscarAdminsConComentarios();
 
-
+    @Query(value =
+            "SELECT u.nombre, u.apellido, COUNT(rc.id_registro) AS total_registros " +
+                    "FROM usuario u " +
+                    "INNER JOIN registro_comidas rc ON rc.id_usuario = u.id_usuario " +
+                    "GROUP BY u.nombre, u.apellido " +
+                    "ORDER BY total_registros DESC " +
+                    "LIMIT 5",
+            nativeQuery = true)
+    public List<String[]> usuariosMasActivos();
 }
 
 

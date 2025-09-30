@@ -30,7 +30,6 @@ public class ReporteController {
         return reporteService.list().stream().map(reporte -> {
             ModelMapper m = new ModelMapper();
             ReportesDTO dto = m.map(reporte, ReportesDTO.class);
-            dto.setIdUsuario(reporte.getUsuario().getIdUsuario());
             dto.setNombreUsuario(reporte.getUsuario().getNombre());
             return dto;
         }).collect(Collectors.toList());

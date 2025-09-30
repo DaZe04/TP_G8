@@ -9,30 +9,13 @@ import java.time.LocalDate;
 
 public class DispositivosDTO {
     private int idDispositivo;
-    private String tipo;
-    private String marca;
-    private String modelo;
-    private LocalDate fechaSincronizacion;
-    private Usuario usuario;
 
-    public DispositivosDTO() {
+    public String getTipo() {
+        return tipo;
     }
 
-    public DispositivosDTO(LocalDate fechaSincronizacion, int idDispositivo, String marca, String modelo, String tipo, Usuario usuario) {
-        this.fechaSincronizacion = fechaSincronizacion;
-        this.idDispositivo = idDispositivo;
-        this.marca = marca;
-        this.modelo = modelo;
+    public void setTipo(String tipo) {
         this.tipo = tipo;
-        this.usuario = usuario;
-    }
-
-    public LocalDate getFechaSincronizacion() {
-        return fechaSincronizacion;
-    }
-
-    public void setFechaSincronizacion(LocalDate fechaSincronizacion) {
-        this.fechaSincronizacion = fechaSincronizacion;
     }
 
     public int getIdDispositivo() {
@@ -59,19 +42,41 @@ public class DispositivosDTO {
         this.modelo = modelo;
     }
 
-    public String getTipo() {
-        return tipo;
+    public LocalDate getFechaSincronizacion() {
+        return fechaSincronizacion;
     }
 
-    public void setTipo(String tipo) {
+    public void setFechaSincronizacion(LocalDate fechaSincronizacion) {
+        this.fechaSincronizacion = fechaSincronizacion;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    private String tipo;
+    private String marca;
+    private String modelo;
+    private LocalDate fechaSincronizacion;
+    private int idUsuario;
+
+    public DispositivosDTO() {
+    }
+
+    public DispositivosDTO(LocalDate fechaSincronizacion, int idDispositivo, String marca, String modelo, String tipo, int idUsuario) {
+        this.fechaSincronizacion = fechaSincronizacion;
+        this.idDispositivo = idDispositivo;
+        this.marca = marca;
+        this.modelo = modelo;
         this.tipo = tipo;
+        this.idUsuario = idUsuario;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+
+
 }

@@ -5,11 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aweb_g08.dtos.QuantityDeviceSusDTO;
+import pe.edu.upc.aweb_g08.dtos.QuantityTypeSusDTO;
 import pe.edu.upc.aweb_g08.dtos.SuscripcionesDTO;
 import pe.edu.upc.aweb_g08.entities.Suscripciones;
+import pe.edu.upc.aweb_g08.entities.Usuario;
 import pe.edu.upc.aweb_g08.repositories.IUsuarioRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.ISuscripcionesService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,12 +25,16 @@ public class SuscripcionesController {
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
+
     @PostMapping
-    public void insertar(@RequestBody SuscripcionesDTO sdto)
-    {
+    public ResponseEntity<String> insertar(@RequestBody SuscripcionesDTO sdto) {
         ModelMapper m = new ModelMapper();
-        Suscripciones s=m.map(sdto,Suscripciones.class);
+        Suscripciones s = m.map(sdto, Suscripciones.class);
+        Usuario usuario = usuarioRepository.findById(sdto.getId_usuario())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + sdto.getId_usuario()));
+        s.setId_usuario(usuario);
         service.insert(s);
+        return ResponseEntity.ok("Suscripción creada correctamente");
     }
     @GetMapping("/dtos")
     public List<SuscripcionesDTO> listar() {
@@ -57,5 +65,35 @@ public class SuscripcionesController {
         }
         service.update(sus);
         return ResponseEntity.ok("Registro con ID " + sus.getId_suscripciones() + " modificado correctamente.");
+    }
+    @GetMapping("/consulta1")
+    public ResponseEntity<?> ObtenerCantidadTipoSuscripciones() {
+        List<QuantityTypeSusDTO> listDTO = new ArrayList<>();
+        List<String[]> fila = service.quantitytypebySuscripciones();
+        if(fila.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe suscripciones activas");
+        }
+        for (String[] s : fila) {
+            QuantityTypeSusDTO dto = new QuantityTypeSusDTO();
+            dto.setTipo(s[0]);
+            dto.setCantidad(Integer.parseInt(s[1]));
+            listDTO.add(dto);
+        }
+        return ResponseEntity.ok(listDTO);
+    }
+    @GetMapping("/consulta2")
+    public ResponseEntity<?> ObtenerCantidadDispositivoSuscripciones() {
+        List<QuantityDeviceSusDTO> listDTO = new ArrayList<>();
+        List<String[]> fila = service.quantityDevicebySuscripciones();
+        if(fila.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe dispositivos en suscripciones activas");
+        }
+        for (String[] s : fila) {
+            QuantityDeviceSusDTO dto = new QuantityDeviceSusDTO();
+            dto.setTipo_suscripcion(s[0]);
+            dto.setCantidad_dispositivos(Integer.parseInt(s[1]));
+            listDTO.add(dto);
+        }
+        return ResponseEntity.ok(listDTO);
     }
 }

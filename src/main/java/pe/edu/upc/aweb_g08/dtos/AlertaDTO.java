@@ -4,9 +4,18 @@ import java.time.LocalDate;
 
 public class AlertaDTO {
     private int idAlerta;
-    private String titulo;
+
     private String mensaje;
-    private LocalDate fechaCreacion;
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    private LocalDate fecha;
     private int idUsuario; // referencia al usuario
 
     // Getters y Setters
@@ -18,13 +27,9 @@ public class AlertaDTO {
         this.idAlerta = idAlerta;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+
+
 
     public String getMensaje() {
         return mensaje;
@@ -34,13 +39,7 @@ public class AlertaDTO {
         this.mensaje = mensaje;
     }
 
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
-    }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
 
     public int getIdUsuario() {
         return idUsuario;
