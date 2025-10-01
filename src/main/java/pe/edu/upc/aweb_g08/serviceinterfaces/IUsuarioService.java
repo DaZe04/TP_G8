@@ -3,6 +3,7 @@ package pe.edu.upc.aweb_g08.serviceinterfaces;
 import pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO;
 import pe.edu.upc.aweb_g08.entities.Usuario;
 import java.util.List;
+import java.util.Optional;
 
 public interface IUsuarioService {
     public List<Usuario> list();
@@ -11,7 +12,7 @@ public interface IUsuarioService {
     public void delete(int id);
     public void update(Usuario usuario);
     public List<Usuario> buscarService(String nombre);
-    public List<AdminComentarioDTO> buscarAdminsConComentarios();
     public List<String[]> usuariosMasActivos();
+    public Optional<Usuario> findByEmail(String email);
 
 }

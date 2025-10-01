@@ -34,9 +34,14 @@ public class Usuario {
     @Column(name = "fecha_suscripcion")
     private LocalDate fechaSuscripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_rol", nullable = false)
-    private Rol rol;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "usuario_roles", // tabla intermedia
+            joinColumns = @JoinColumn(name = "id_usuario"), // FK hacia usuario
+            inverseJoinColumns = @JoinColumn(name = "id_rol") // FK hacia rol
+    )
+    private List<Rol> roles;
 
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -47,27 +52,39 @@ public class Usuario {
     private List<Comentarios> comentarios;
 
 
+    public Usuario(List<Alertas> alertas, String apellido, List<Comentarios> comentarios,
+                   String contrasenia, LocalDate fechaCreacion, LocalDate fechaNacimiento, String email,
+                   int idUsuario, LocalDate fechaSuscripcion, String nombre, List<Reportes> reportes, List<Rol> roles) {
+        this.alertas = alertas;
+        this.apellido = apellido;
+        this.comentarios = comentarios;
+        this.contrasenia = contrasenia;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.email = email;
+        this.idUsuario = idUsuario;
+        this.fechaSuscripcion = fechaSuscripcion;
+        this.nombre = nombre;
+        this.reportes = reportes;
+        this.roles = roles;
+    }
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Alertas> alertas;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String email, String contrasenia,
-                   LocalDate fechaNacimiento, LocalDate fechaCreacion, LocalDate fechaSuscripcion, Rol rol) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.contrasenia = contrasenia;
-        this.fechaNacimiento = fechaNacimiento;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaSuscripcion = fechaSuscripcion;
-        this.rol = rol;
-    }
+
 
     // Getters y Setters
+    public List<Rol> getRoles() {
+        return roles;
+    }
 
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -132,13 +149,7 @@ public class Usuario {
         this.fechaSuscripcion = fechaSuscripcion;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
 
     public List<Reportes> getReportes() {
         return reportes;

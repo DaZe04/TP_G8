@@ -34,7 +34,7 @@ public class SuscripcionesController {
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + sdto.getId_usuario()));
         s.setId_usuario(usuario);
         service.insert(s);
-        return ResponseEntity.ok("Suscripción creada correctamente");
+        return ResponseEntity.ok("Suscripción creada correctamente");/*asdas*/
     }
     @GetMapping("/dtos")
     public List<SuscripcionesDTO> listar() {

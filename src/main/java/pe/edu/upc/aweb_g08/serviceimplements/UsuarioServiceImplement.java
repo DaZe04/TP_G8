@@ -10,6 +10,7 @@ import pe.edu.upc.aweb_g08.serviceinterfaces.IUsuarioService;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImplement implements IUsuarioService {
@@ -47,13 +48,13 @@ public class UsuarioServiceImplement implements IUsuarioService {
         return uR.buscarService(nombre);
     }
 
-    @Override
-    public List<AdminComentarioDTO> buscarAdminsConComentarios() {
-        return uR.buscarAdminsConComentarios();
-    }
 
     @Override
     public List<String[]> usuariosMasActivos() {
         return uR.usuariosMasActivos();
+    }
+    @Override
+    public Optional<Usuario> findByEmail(String email) {
+        return uR.findByEmail(email);
     }
 }
