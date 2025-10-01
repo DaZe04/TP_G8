@@ -55,4 +55,18 @@ public class RegistroComidaController {
         rcService.delete(id);
         return ResponseEntity.ok("Registro eliminado correctamente con ID: " + id);
     }
+
+        @PutMapping
+    public ResponseEntity<String> modificar(@RequestBody RegistroComida registroComida) {
+        RegistroComida existente = rcService.listId(registroComida.getIdRegistro());
+
+        if (existente == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se puede modificar. No existe un registro con el ID: " + registroComida.getIdRegistro());
+        }
+
+        rcService.update(registroComida);
+
+        return ResponseEntity.ok("Registro con ID " + registroComida.getIdRegistro() + " modificado correctamente.");
+    }
 }
