@@ -1,5 +1,6 @@
 package pe.edu.upc.aweb_g08.serviceinterfaces;
 
+import pe.edu.upc.aweb_g08.dtos.ListaCompraResumenDTO;
 import pe.edu.upc.aweb_g08.entities.Lista_Compras;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface ILista_ComprasService  {
     public Lista_Compras  buscar(int id);
     public void delete(int id);
     public void update(Lista_Compras  listaCompras);
+    List<Object[]> listasDeComprasMasGrandes();
+
 }

@@ -3,6 +3,7 @@ package pe.edu.upc.aweb_g08.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.aweb_g08.entities.Receta_Recomendacion;
+import pe.edu.upc.aweb_g08.entities.Recetas;
 import pe.edu.upc.aweb_g08.repositories.IRecetaRecomendacionRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IRecetaRecomendacionService;
 

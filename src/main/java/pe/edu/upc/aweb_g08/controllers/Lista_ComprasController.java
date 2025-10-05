@@ -3,12 +3,15 @@ package pe.edu.upc.aweb_g08.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aweb_g08.dtos.ListaCompraResumenDTO;
 import pe.edu.upc.aweb_g08.dtos.Lista_ComprasDTO;
 import pe.edu.upc.aweb_g08.entities.Lista_Compras;
 import pe.edu.upc.aweb_g08.serviceinterfaces.ILista_ComprasService;
 import pe.edu.upc.aweb_g08.entities.Ingredientes;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,5 +55,19 @@ public class Lista_ComprasController  {
         lc.setIngrediente(ing);
 
         lcService.update(lc);
+    }
+
+    @GetMapping("/listas-compras/mas-grandes")
+    public List<ListaCompraResumenDTO> obtenerListasMasGrandes() {
+        List<Object[]> resultados = lcService.listasDeComprasMasGrandes();
+
+        List<ListaCompraResumenDTO> listaDTO = new ArrayList<>();
+        for (Object[] fila : resultados) {
+            LocalDate fecha = (LocalDate) fila[0];
+            Long total = (Long) fila[1];
+            listaDTO.add(new ListaCompraResumenDTO(fecha,total));
+        }
+
+        return listaDTO;
     }
 }

@@ -2,6 +2,7 @@ package pe.edu.upc.aweb_g08.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.aweb_g08.dtos.ListaCompraResumenDTO;
 import pe.edu.upc.aweb_g08.entities.Lista_Compras;
 import pe.edu.upc.aweb_g08.repositories.ILista_ComprasRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.ILista_ComprasService;
@@ -40,4 +41,10 @@ public class ILista_ComprasServiceImplement  implements ILista_ComprasService {
     public void update(Lista_Compras listaCompras) {
         repository.save(listaCompras);
     }
+
+    @Override
+    public List<Object[]> listasDeComprasMasGrandes() {
+        return repository.listasDeComprasMasGrandes(); // devuelve directo
+    }
+
 }

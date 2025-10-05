@@ -1,6 +1,8 @@
 package pe.edu.upc.aweb_g08.serviceinterfaces;
 
 import pe.edu.upc.aweb_g08.entities.Receta_Recomendacion;
+import pe.edu.upc.aweb_g08.entities.Recetas;
+
 import java.util.List;
 
 public interface IRecetaRecomendacionService {
@@ -13,6 +15,5 @@ public interface IRecetaRecomendacionService {
     void delete(int id);
 
     List<Receta_Recomendacion> listarPorPerfil(int idPerfil);
-
 }
 
