@@ -28,4 +28,14 @@ public class IRegistroComidaImplements implements IRegistroComidaService {
 
     @Override
     public RegistroComida listId(int id) { return rcRepo.findById(id).orElse(null); }
+
+    @Override
+    public List<RegistroComida> listarPorReceta(int idReceta) {
+        return rcRepo.listarPorReceta(idReceta);
+    }
+
+    @Override
+    public List<RegistroComida> listarPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        return rcRepo.listarPorRangoDeFechas(fechaInicio, fechaFin);
+    }
 }
