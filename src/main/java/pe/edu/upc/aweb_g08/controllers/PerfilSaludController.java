@@ -103,8 +103,15 @@ public class PerfilSaludController {
         return ResponseEntity.ok("Perfil de salud con ID " + dto.getIdPerfilSalud() + " modificado correctamente.");
     }
 
-    @GetMapping("/perfiles-criticos")
-    public List<PerfilSaludDTO> listarUsuariosConPerfilAlterado() {
-        return perfilSaludService.listarUsuariosConPerfilAlterado();
+    @GetMapping("/ultimo/{idUsuario}")
+    public ResponseEntity<?> obtenerUltimoPerfil(@PathVariable("idUsuario") int idUsuario) {
+        PerfilSalud perfil = perfilSaludService.obtenerUltimoPerfilPorUsuario(idUsuario);
+        if (perfil == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontró perfil de salud para el usuario con ID: " + idUsuario);
+        }
+        ModelMapper m = new ModelMapper();
+        PerfilSaludDTO dto = m.map(perfil, PerfilSaludDTO.class);
+        return ResponseEntity.ok(dto);
     }
 }
