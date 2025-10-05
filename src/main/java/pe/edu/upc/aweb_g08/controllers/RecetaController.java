@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aweb_g08.dtos.RecetaTiempoDTO;
 import pe.edu.upc.aweb_g08.dtos.RecetasDTO;
 import pe.edu.upc.aweb_g08.entities.Recetas;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IRecetasService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,4 +56,19 @@ public class RecetaController {
         service.update(receta);
         return ResponseEntity.ok("Registro con ID " + receta.getIdRecetas() + " modificado correctamente.");
     }
+    @GetMapping("/mas-largas")
+    public List<RecetaTiempoDTO> recetasMasLargas() {
+        List<Recetas> recetas = service.recetasMasLargas();
+        List<RecetaTiempoDTO> recetasDTO = new ArrayList<>();
+        for (Recetas r : recetas) {
+            RecetaTiempoDTO dto = new RecetaTiempoDTO();
+            dto.setTitulo(r.getTitulo());
+            dto.setTiempoPreparacion(r.getTiempoPreparacion());
+            recetasDTO.add(dto);
+        }
+
+        return recetasDTO;
+    }
+
+
 }
