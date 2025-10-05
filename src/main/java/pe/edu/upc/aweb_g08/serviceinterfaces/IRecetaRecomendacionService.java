@@ -11,7 +11,6 @@ public interface IRecetaRecomendacionService {
     Receta_Recomendacion buscar(int id);
     void delete(int id);
     void update(Receta_Recomendacion recomendacion);
-    List<Receta_Recomendacion> listarPorPerfil(int idPerfil);
-
+    List<Receta_Recomendacion> listarPorCantidadMinima(float minCantidad);
 }
 
