@@ -31,6 +31,8 @@ public class IRecetaRecomendacion implements IRecetaRecomendacionService {
     public void update(Receta_Recomendacion recomendacion) {rrRepository.save(recomendacion);}
 
     @Override
-    public List<Receta_Recomendacion> listarPorPerfil(int idUsuario) { return rrRepository.findByUsuario(idUsuario); }
+    public List<Receta_Recomendacion> listarPorCantidadMinima(float minCantidad) {
+        return rrRepository.listarPorCantidadMinima(minCantidad);
+    }
 
 }
