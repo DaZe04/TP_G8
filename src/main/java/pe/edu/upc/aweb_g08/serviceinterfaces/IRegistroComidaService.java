@@ -9,4 +9,6 @@ public interface IRegistroComidaService {
     void delete(int id);
     RegistroComida listId(int id);
     void update(RegistroComida registroComida);
+    List<RegistroComida> listarPorReceta(int idReceta);
+    List<RegistroComida> listarPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin);
 }
