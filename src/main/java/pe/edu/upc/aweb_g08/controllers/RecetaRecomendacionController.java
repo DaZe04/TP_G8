@@ -60,14 +60,11 @@ public class RecetaRecomendacionController {
         return ResponseEntity.ok("Registro con ID " + receta.getReceta() + " modificado correctamente.");
     }
 
-    @GetMapping("/perfil/{idPerfil}")
-    public List<RecetaRecomendacionDTO> listarPorPerfil(@PathVariable("idPerfil") int idPerfil) {
-        return recetaService.listarPorPerfil(idPerfil).stream().map(x -> {
+    @GetMapping("/cantidad-minima/{minCantidad}")
+    public List<RecetaRecomendacionDTO> listarPorCantidadMinima(@PathVariable("minCantidad") float minCantidad) {
+        return recetaService.listarPorCantidadMinima(minCantidad).stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, RecetaRecomendacionDTO.class);
         }).collect(Collectors.toList());
     }
-
-
-
 }
