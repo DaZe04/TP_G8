@@ -45,4 +45,8 @@ public class IRecetaRecomendacion implements IRecetaRecomendacionService {
         return rrRepository.findByUsuario(idUsuario);
     }
 
+    @Override
+    public List<Receta_Recomendacion> listarPorCantidadMinima(float minCantidad) {
+        return rrRepository.listarPorCantidadMinima(minCantidad);
+    }
 }

@@ -6,6 +6,7 @@ import pe.edu.upc.aweb_g08.entities.RegistroComida;
 import pe.edu.upc.aweb_g08.repositories.IRegistroComidaRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IRegistroComidaService;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class IRegistroComidaImplements implements IRegistroComidaService {
@@ -23,10 +24,22 @@ public class IRegistroComidaImplements implements IRegistroComidaService {
     public List<RegistroComida> list() {
         return rcRepo.findAll();
     }
+    @Override
+    public void update(RegistroComida registroComida) { rcRepo.save(registroComida);}
 
     @Override
     public void delete(int id) { rcRepo.deleteById(id); }
 
     @Override
     public RegistroComida listId(int id) { return rcRepo.findById(id).orElse(null); }
+
+    @Override
+    public List<RegistroComida> listarPorReceta(int idReceta) {
+        return rcRepo.listarPorReceta(idReceta);
+    }
+
+    @Override
+    public List<RegistroComida> listarPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        return rcRepo.listarPorRangoDeFechas(fechaInicio, fechaFin);
+    }
 }
