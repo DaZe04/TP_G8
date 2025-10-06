@@ -16,24 +16,33 @@ public class IRecetaRecomendacion implements IRecetaRecomendacionService {
     private IRecetaRecomendacionRepository rrRepository;
 
     @Override
-    public List<Receta_Recomendacion> list() { return rrRepository.findAll(); }
+    public List<Receta_Recomendacion> list() {
+        return rrRepository.findAll();
+    }
 
     @Override
-    public void insert(Receta_Recomendacion recomendacion) { rrRepository.save(recomendacion); }
-
-
-    @Override
-    public Receta_Recomendacion listId(int id) { return rrRepository.findById(id).orElse(null); }
+    public void insert(Receta_Recomendacion recomendacion) {
+        rrRepository.save(recomendacion);
+    }
 
     @Override
-    public void delete(int id) { rrRepository.deleteById(id); }
+    public List<Receta_Recomendacion> buscarPorIngrediente(String ingrediente) {
+        return List.of();
+    }
 
     @Override
-    public void update(Receta_Recomendacion recomendacion) {rrRepository.save(recomendacion);}
+    public Receta_Recomendacion listId(int id) {
+        return rrRepository.findById(id).orElse(null);
+    }
 
     @Override
-    public List<Receta_Recomendacion> listarPorCantidadMinima(float minCantidad) {
-        return rrRepository.listarPorCantidadMinima(minCantidad);
+    public void delete(int id) {
+        rrRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Receta_Recomendacion> listarPorPerfil(int idUsuario) {
+        return rrRepository.findByUsuario(idUsuario);
     }
 
 }

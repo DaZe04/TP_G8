@@ -9,13 +9,11 @@ import java.util.List;
 
 @Repository
 public interface IPerfilSaludRepository extends JpaRepository<PerfilSalud, Integer> {
-@Query("SELECT new pe.edu.upc.aweb_g08.dtos.PerfilSaludDTO(" +
+
+    @Query("SELECT new pe.edu.upc.aweb_g08.dtos.PerfilSaludDTO(" +
             "p.idPerfilSalud, p.peso, p.altura, p.nivelTrigliceridos, p.nivelColesterol, " +
             "p.fechaActualizacion, u.idUsuario, u.nombre) " +
             "FROM PerfilSalud p JOIN p.usuario u " +
             "WHERE p.nivelTrigliceridos > 150 OR p.nivelColesterol > 200")
     List<PerfilSaludDTO> listarUsuariosConPerfilAlterado();
-    
-@Query("SELECT p FROM PerfilSalud p WHERE p.idUsuario = :idUsuario ORDER BY p.fechaRegistro DESC LIMIT 1")
-    PerfilSalud obtenerUltimoPerfilPorUsuario(@Param("idUsuario") int idUsuario);
 }
