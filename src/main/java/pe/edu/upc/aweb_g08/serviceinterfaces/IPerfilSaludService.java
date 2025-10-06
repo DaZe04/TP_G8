@@ -11,5 +11,5 @@ public interface IPerfilSaludService {
     public void delete(int id);
     public void update(PerfilSalud perfilSalud);
     public List<PerfilSaludDTO> listarUsuariosConPerfilAlterado();
-
+    public PerfilSalud obtenerUltimoPerfilPorUsuario(int idUsuario);
 }

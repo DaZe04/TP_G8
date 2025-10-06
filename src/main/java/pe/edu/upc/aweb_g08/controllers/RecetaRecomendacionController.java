@@ -2,6 +2,8 @@ package pe.edu.upc.aweb_g08.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aweb_g08.dtos.RecetaRecomendacionDTO;
 import pe.edu.upc.aweb_g08.entities.Receta_Recomendacion;
@@ -43,7 +45,23 @@ public class RecetaRecomendacionController {
             return m.map(x, RecetaRecomendacionDTO.class);
         }).collect(Collectors.toList());
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
+        Receta_Recomendacion r = recetaService.listId(id);
+        if (r == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe un registro con el ID: " + id);
+        }
+        recetaService.delete(id);
+        return ResponseEntity.ok("Registro con ID " + id + " eliminado correctamente.");
+    }
 
-
+    @GetMapping("/cantidad-minima/{minCantidad}")
+    public List<RecetaRecomendacionDTO> listarPorCantidadMinima(@PathVariable("minCantidad") float minCantidad) {
+        return recetaService.listarPorCantidadMinima(minCantidad).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, RecetaRecomendacionDTO.class);
+        }).collect(Collectors.toList());
+    }
 
 }
