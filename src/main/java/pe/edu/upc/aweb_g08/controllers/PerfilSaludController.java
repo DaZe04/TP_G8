@@ -102,7 +102,10 @@ public class PerfilSaludController {
         perfilSaludService.update(perfil);
         return ResponseEntity.ok("Perfil de salud con ID " + dto.getIdPerfilSalud() + " modificado correctamente.");
     }
-
+    
+    @GetMapping("/perfiles-criticos")
+    public List<PerfilSaludDTO> listarUsuariosConPerfilAlterado() {
+        return perfilSaludService.listarUsuariosConPerfilAlterado();
     @GetMapping("/ultimo/{idUsuario}")
     public ResponseEntity<?> obtenerUltimoPerfil(@PathVariable("idUsuario") int idUsuario) {
         PerfilSalud perfil = perfilSaludService.obtenerUltimoPerfilPorUsuario(idUsuario);
