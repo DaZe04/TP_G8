@@ -17,9 +17,9 @@ public interface IPerfilSaludRepository extends JpaRepository<PerfilSalud, Integ
             "FROM PerfilSalud p JOIN p.usuario u " +
             "WHERE p.nivelTrigliceridos > 150 OR p.nivelColesterol > 200")
     List<PerfilSaludDTO> listarUsuariosConPerfilAlterado();
-
     @Query("SELECT p FROM PerfilSalud p WHERE p.usuario.idUsuario = :idUsuario ORDER BY p.fechaActualizacion DESC")
     PerfilSalud obtenerUltimoPerfilPorUsuario(@Param("idUsuario") int idUsuario);
+
 
 }
 
