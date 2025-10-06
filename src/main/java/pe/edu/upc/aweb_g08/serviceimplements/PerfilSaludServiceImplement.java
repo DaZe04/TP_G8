@@ -47,7 +47,7 @@ public class PerfilSaludServiceImplement implements IPerfilSaludService {
     }
 
     @Override
-    public PerfilSalud obtenerUltimoPerfilPorUsuario(int idUsuario) {
-        return perfilSaludRepository.obtenerUltimoPerfilPorUsuario(idUsuario);
+    public List<PerfilSaludDTO> listarUsuariosConPerfilAlterado() {
+        return perfilSaludRepository.listarUsuariosConPerfilAlterado();
     }
 }

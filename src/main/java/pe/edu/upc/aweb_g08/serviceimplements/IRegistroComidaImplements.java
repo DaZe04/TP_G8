@@ -15,27 +15,18 @@ public class IRegistroComidaImplements implements IRegistroComidaService {
     private IRegistroComidaRepository rcRepo;
 
     @Override
-    public void insert(RegistroComida registro) { rcRepo.save(registro); }
+    public void insert(RegistroComida registro) {
+        rcRepo.save(registro);
+    }
 
     @Override
-    public List<RegistroComida> list() { return rcRepo.findAll(); }
+    public List<RegistroComida> list() {
+        return rcRepo.findAll();
+    }
 
     @Override
     public void delete(int id) { rcRepo.deleteById(id); }
 
     @Override
-    public void update(RegistroComida registroComida) { rcRepo.save(registroComida);}
-
-    @Override
     public RegistroComida listId(int id) { return rcRepo.findById(id).orElse(null); }
-
-    @Override
-    public List<RegistroComida> listarPorReceta(int idReceta) {
-        return rcRepo.listarPorReceta(idReceta);
-    }
-
-    @Override
-    public List<RegistroComida> listarPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
-        return rcRepo.listarPorRangoDeFechas(fechaInicio, fechaFin);
-    }
 }
