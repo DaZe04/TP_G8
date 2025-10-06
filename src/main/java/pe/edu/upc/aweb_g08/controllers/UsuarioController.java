@@ -35,10 +35,9 @@ public class UsuarioController {
         ModelMapper m = new ModelMapper();
         Usuario usuario = m.map(dto, Usuario.class);
 
-        // Asignar rol manualmente
         Rol rol = new Rol();
         rol.setIdRol(dto.getIdRol());
-        usuario.setRol(rol);
+        usuario.getRoles().add(rol);
 
         usuarioService.insert(usuario);
     }
@@ -84,10 +83,6 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + usuario.getIdUsuario() + " modificado correctamente.");
     }
 
-    @GetMapping("/admins-comentarios")
-    public List<AdminComentarioDTO> obtenerAdminsConComentarios() {
-        return usuarioService.buscarAdminsConComentarios();
-    }
 
 
 

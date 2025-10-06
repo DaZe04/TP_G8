@@ -7,18 +7,16 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO;
 import pe.edu.upc.aweb_g08.entities.Usuario;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("select u from Usuario u where u.nombre like %:nombre%")
     public List<Usuario> buscarService(@Param("nombre") String nombre);
+    Optional<Usuario> findByEmail(String email);
 
-    @Query("SELECT new pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO(u.idUsuario, u.nombre, u.apellido, c.contenido) " +
-            "FROM Usuario u " +
-            "JOIN u.rol r " +
-            "JOIN u.comentarios c " +
-            "WHERE r.idRol = 1 AND UPPER(r.nombre) = 'ADMIN'")
-    List<AdminComentarioDTO> buscarAdminsConComentarios();
+    @Query("SELECT DISTINCT u FROM Usuario u JOIN u.roles r WHERE r.nombre = 'ADMIN' AND SIZE(u.comentarios) > 0")
+    List<Usuario> buscarAdminsConComentarios();
 
     @Query(value =
             "SELECT u.nombre, u.apellido, COUNT(rc.id_registro) AS total_registros " +

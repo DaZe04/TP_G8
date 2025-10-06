@@ -8,10 +8,10 @@ import pe.edu.upc.aweb_g08.serviceinterfaces.IRecetasService;
 
 import java.util.List;
 @Service
-public class IRecetasServiceImplement  implements IRecetasService  {
+public class IRecetasServiceImplement  implements IRecetasService {
 
     @Autowired
-    private IRecetasRepository  repository;
+    private IRecetasRepository repository;
 
 
     @Override
@@ -26,7 +26,7 @@ public class IRecetasServiceImplement  implements IRecetasService  {
 
 
     @Override
-    public Recetas  buscar(int id) {
+    public Recetas buscar(int id) {
         return repository.findById(id).orElse(null);
     }
 
@@ -38,6 +38,12 @@ public class IRecetasServiceImplement  implements IRecetasService  {
     @Override
     public void update(Recetas recetas) {
         repository.save(recetas);
+    }
 
+    @Override
+    public List<Recetas> recetasMasLargas() {
+        {
+            return repository.recetasMasLargas();
+        }
     }
 }
