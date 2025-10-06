@@ -15,5 +15,5 @@ public interface IPerfilSaludRepository extends JpaRepository<PerfilSalud, Integ
             "p.fechaActualizacion, u.idUsuario, u.nombre) " +
             "FROM PerfilSalud p JOIN p.usuario u " +
             "WHERE p.nivelTrigliceridos > 150 OR p.nivelColesterol > 200")
-    List<PerfilSaludDTO> listarUsuariosConPerfilAlterado(); /*ddada*/
+    List<PerfilSaludDTO> listarUsuariosConPerfilAlterado();
 }
