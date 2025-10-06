@@ -107,7 +107,6 @@ public class PerfilSaludController {
     public List<PerfilSaludDTO> listarUsuariosConPerfilAlterado() {
         return perfilSaludService.listarUsuariosConPerfilAlterado();
     }
-
     @GetMapping("/ultimo/{idUsuario}")
     public ResponseEntity<?> obtenerUltimoPerfil(@PathVariable("idUsuario") int idUsuario) {
         PerfilSalud perfil = perfilSaludService.obtenerUltimoPerfilPorUsuario(idUsuario);
@@ -119,5 +118,6 @@ public class PerfilSaludController {
         PerfilSaludDTO dto = m.map(perfil, PerfilSaludDTO.class);
         return ResponseEntity.ok(dto);
     }
+
 
 }
