@@ -12,10 +12,6 @@ import java.util.List;
 @Repository
 public interface IRecetaRecomendacionRepository extends JpaRepository<Receta_Recomendacion, Integer> {
 
-    @Query("SELECT r FROM Receta_Recomendacion r WHERE r.usuario.idUsuario= :idPerfil")
-    List<Receta_Recomendacion> findByUsuario(@Param("idPerfil") int idPerfil);
-
-
-    @Query("SELECT r FROM Receta_Recomendacion r WHERE LOWER(r.recetas) LIKE LOWER(CONCAT('%', :ingrediente, '%'))")
-    List<Receta_Recomendacion> findByReceta(@Param("ingrediente") String ingrediente);
+  @Query("SELECT r FROM Receta_Recomendacion r WHERE r.cantidad >= :minCantidad")
+    List<Receta_Recomendacion> listarPorCantidadMinima(@Param("minCantidad") float minCantidad);
 }

@@ -14,5 +14,4 @@ public interface IRecetasRepository extends JpaRepository<Recetas, Integer> {
     @Query("SELECT r FROM Recetas r ORDER BY r.tiempoPreparacion DESC")
     List<Recetas> recetasMasLargas();
 
-
 }
