@@ -27,7 +27,6 @@ public class WebSecurityConfig {
 
     private static final String[] WHITE_LIST_URL = {
             "/login",
-            "/usuarios/insertar",
             "/api/v1/auth/**",
             "/v2/api-docs",
             "/v3/api-docs",
@@ -77,9 +76,8 @@ public class WebSecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers(WHITE_LIST_URL).permitAll()
-                        .requestMatchers("/usuarios/insertar").hasAuthority("ROLE_ADMIN")
-                        .anyRequest().authenticated()
+                        .requestMatchers(WHITE_LIST_URL).permitAll() // ✅ Swagger + login públicos
+                        .anyRequest().authenticated()                 // 🔒 El resto requiere token
                 )
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)

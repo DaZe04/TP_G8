@@ -9,11 +9,8 @@ import pe.edu.upc.aweb_g08.dtos.AdminComentarioDTO;
 import pe.edu.upc.aweb_g08.dtos.UsuarioDTO;
 import pe.edu.upc.aweb_g08.entities.Rol;
 import pe.edu.upc.aweb_g08.entities.Usuario;
-import pe.edu.upc.aweb_g08.repositories.IRolRepository;
-import pe.edu.upc.aweb_g08.repositories.IUsuarioRepository;
 import pe.edu.upc.aweb_g08.serviceinterfaces.IUsuarioService;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,11 +18,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
-    private IUsuarioRepository usuarioRepository;
-    @Autowired
     private IUsuarioService usuarioService;
-    @Autowired
-    private IRolRepository rolRepository;
+
     // LISTAR TODOS
     @GetMapping
     public List<UsuarioDTO> listar() {
@@ -35,22 +29,17 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
+    // INSERTAR
     @PostMapping("/insertar")
-    public Usuario insertar(@RequestBody UsuarioDTO dto) {
+    public void insertar(@RequestBody UsuarioDTO dto) {
+        ModelMapper m = new ModelMapper();
+        Usuario usuario = m.map(dto, Usuario.class);
 
-        Usuario usuario = new Usuario();
-        usuario.setNombre(dto.getNombre());
-        usuario.setApellido(dto.getApellido());
-        usuario.setEmail(dto.getEmail());
-        usuario.setContrasenia(dto.getContrasenia());
-        usuario.setFechaNacimiento(dto.getFechaNacimiento());
-        usuario.setFechaCreacion(LocalDate.now());
-        usuario.setFechaSuscripcion(dto.getFechaSuscripcion());
-        Rol rol = rolRepository.findById(dto.getIdRol())
-                .orElseThrow(() -> new RuntimeException("Rol no encontrado con id: " + dto.getIdRol()));
+        Rol rol = new Rol();
+        rol.setIdRol(dto.getIdRol());
         usuario.getRoles().add(rol);
 
-        return usuarioRepository.save(usuario);
+        usuarioService.insert(usuario);
     }
 
 
