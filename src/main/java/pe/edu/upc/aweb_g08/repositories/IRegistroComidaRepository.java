@@ -16,8 +16,9 @@ public interface IRegistroComidaRepository extends JpaRepository<RegistroComida,
     List<RegistroComida> listarPorReceta(@Param("idReceta") int idReceta);
 
     @Query("SELECT r FROM RegistroComida r WHERE r.fechaConsumo BETWEEN :fechaInicio AND :fechaFin")
-    List<RegistroComida> listarPorRangoDeFechas( @Param("inicio") LocalDate inicio,
-                                                 @Param("fin") LocalDate fin
+    List<RegistroComida> listarPorRangoDeFechas(
+            @Param("fechaInicio") LocalDate inicio,
+            @Param("fechaFin") LocalDate fin
     );
 
 }
