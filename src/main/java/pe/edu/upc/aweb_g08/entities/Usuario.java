@@ -2,6 +2,7 @@ package pe.edu.upc.aweb_g08.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,13 +36,13 @@ public class Usuario {
     private LocalDate fechaSuscripcion;
 
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "usuario_roles", // tabla intermedia
             joinColumns = @JoinColumn(name = "id_usuario"), // FK hacia usuario
             inverseJoinColumns = @JoinColumn(name = "id_rol") // FK hacia rol
     )
-    private List<Rol> roles;
+    private List<Rol> roles = new ArrayList<>();
 
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
