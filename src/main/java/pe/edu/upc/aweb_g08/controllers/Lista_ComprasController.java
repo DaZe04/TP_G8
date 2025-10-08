@@ -63,11 +63,18 @@ public class Lista_ComprasController  {
 
         List<ListaCompraResumenDTO> listaDTO = new ArrayList<>();
         for (Object[] fila : resultados) {
-            LocalDate fecha = (LocalDate) fila[0];
-            Long total = (Long) fila[1];
-            listaDTO.add(new ListaCompraResumenDTO(fecha,total));
-        }
+            // fecha
+            Object f0 = fila[0];
+            LocalDate fecha = (f0 instanceof LocalDate)
+                    ? (LocalDate) f0
+                    : ((java.sql.Date) f0).toLocalDate();
 
+            // total
+            Number n = (Number) fila[1];
+            long total = (n == null) ? 0L : n.longValue();
+
+            listaDTO.add(new ListaCompraResumenDTO(fecha, total));
+        }
         return listaDTO;
     }
 }
