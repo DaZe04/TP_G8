@@ -24,7 +24,6 @@ public class PerfilSaludController {
     @Autowired
     private IUsuarioService usuarioService;
 
-    // LISTAR
     @GetMapping
     public List<PerfilSaludDTO> listar() {
         return perfilSaludService.list().stream().map(perfil -> {
@@ -36,8 +35,8 @@ public class PerfilSaludController {
         }).collect(Collectors.toList());
     }
 
-    // INSERTAR
-    @PostMapping("/insertar")
+
+    @PostMapping
     public ResponseEntity<String> insertar(@RequestBody PerfilSaludDTO dto) {
         ModelMapper m = new ModelMapper();
         PerfilSalud perfil = m.map(dto, PerfilSalud.class);
@@ -53,7 +52,6 @@ public class PerfilSaludController {
         return ResponseEntity.ok("Perfil de salud registrado correctamente.");
     }
 
-    // BUSCAR POR ID
     @GetMapping("/{id}")
     public ResponseEntity<?> listarPorId(@PathVariable("id") Integer id) {
         PerfilSalud perfil = perfilSaludService.listId(id);
@@ -68,7 +66,6 @@ public class PerfilSaludController {
         return ResponseEntity.ok(dto);
     }
 
-    // ELIMINAR
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         PerfilSalud perfil = perfilSaludService.listId(id);
@@ -80,7 +77,6 @@ public class PerfilSaludController {
         return ResponseEntity.ok("Perfil de salud con ID " + id + " eliminado correctamente.");
     }
 
-    // MODIFICAR
     @PutMapping
     public ResponseEntity<String> modificar(@RequestBody PerfilSaludDTO dto) {
         ModelMapper m = new ModelMapper();

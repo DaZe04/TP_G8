@@ -1,14 +1,30 @@
 package pe.edu.upc.aweb_g08.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import pe.edu.upc.aweb_g08.entities.Usuario;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 
 public class DispositivosDTO {
     private int idDispositivo;
+    private String tipo;
+    private String marca;
+    private String modelo;
+    @JsonProperty("fecha_sincronizacion")
+    private LocalDate fechaSincronizacion;
+
+    @JsonProperty("id_Usuario")  // AGREGAR ESTO
+    private int idUsuario;
+
+    public DispositivosDTO() {
+    }
+
+    public DispositivosDTO(LocalDate fechaSincronizacion, int idDispositivo, String marca, String modelo, String tipo, int idUsuario) {
+        this.fechaSincronizacion = fechaSincronizacion;
+        this.idDispositivo = idDispositivo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.tipo = tipo;
+        this.idUsuario = idUsuario;
+    }
 
     public String getTipo() {
         return tipo;
@@ -57,26 +73,4 @@ public class DispositivosDTO {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-
-    private String tipo;
-    private String marca;
-    private String modelo;
-    private LocalDate fechaSincronizacion;
-    private int idUsuario;
-
-    public DispositivosDTO() {
-    }
-
-    public DispositivosDTO(LocalDate fechaSincronizacion, int idDispositivo, String marca, String modelo, String tipo, int idUsuario) {
-        this.fechaSincronizacion = fechaSincronizacion;
-        this.idDispositivo = idDispositivo;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.tipo = tipo;
-        this.idUsuario = idUsuario;
-    }
-
-
-
-
 }

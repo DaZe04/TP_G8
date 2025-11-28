@@ -30,13 +30,13 @@ public class RegistroComida {
 
     public RegistroComida() {
     }
-
     public RegistroComida(LocalDate fechaConsumo, String notas, Integer idUsuario, Recetas recetas) {
         this.fechaConsumo = fechaConsumo;
         this.notas = notas;
         this.idUsuario = idUsuario;
         this.recetas = recetas;
     }
+
 
 
     public Integer getIdRegistro() {

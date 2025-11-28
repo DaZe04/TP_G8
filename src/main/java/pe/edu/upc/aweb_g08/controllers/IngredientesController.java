@@ -1,6 +1,7 @@
 package pe.edu.upc.aweb_g08.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,14 +56,15 @@ public class IngredientesController {
 
     // ELIMINAR
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
-        Ingredientes ingredientes = ingredienteService.listId(id);
-        if (ingredientes == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No existe un ingrediente con ID: " + id);
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        Ingredientes ing = ingredienteService.listId(id);
+        if (ing == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe un ingrediente con ID: " + id);
+        try {
+            ingredienteService.delete(id);
+            return ResponseEntity.ok("Ingrediente eliminado correctamente.");
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("No se puede eliminar porque está relacionado con otros datos.");
         }
-        ingredienteService.delete(id);
-        return ResponseEntity.ok("Ingrediente con ID " + id + " eliminado correctamente.");
     }
 
     // MODIFICAR
